@@ -1,42 +1,144 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- let's import our stylesheet (found in public/css/styles.css)-->
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
-  </head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+ 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@300&display=swap">
+  <title>Transportation converter</title>
+ 
+  <style>
 
-  <!-- you can also specify styles straight in html! Let's use Verdana on this page.-->
-  <body style="font-family: Verdana">
-    <header
-      style="background-color: #e5e5e5; padding: 15px; text-align: center"
-    >
-      <h1>Hello World</h1>
-    </header>
+    h1.typewrite {  /* Target only h1 with class typewrite */
+      margin: 10px 0;
+      font-family: 'Courier New', Courier, monospace; 
+      font-weight: 30; /* Light weight */
+      border-right: 0.08em solid #e20808;
+    }
+  </style>
 
-    <div class="site-view">
-      <nav>
-        <a href="/a">Normal Rabbit</a>
-        <a href="/b">Gray Rabbit</a>
-        <a href="/c">Sepia Rabbit</a>
-      </nav>
+  <script>
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
 
-      <main>
-        <h2>Why are these colors so ugly?</h2>
-        <p>
-          Sure makes you feel motivated to pick a better color-scheme for
-          yourself instead of sticking with these ugly default colors, huh? >:)
-        </p>
-      </main>
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
 
-      <footer>
-        <h2>About</h2>
-        <p>
-          This is some example code prepared for CS160: User Interface Design
-          &amp; Development, Spring 2024. It was built by Nate Weinman, Shm
-          Almeda, and Timothy J. Aveni.
-        </p>
-      </footer>
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+  </script>
+
+
+</head>
+
+
+
+<body style="font-family: Open Sans, sans-serif;">
+  
+ 
+  
+  
+  
+
+  <div class="container">
+    <h1>
+      <a href="" class="typewrite" data-period="2000" data-type='[ "Transportation Converter" ]'>
+        <span class="wrap"></span>
+      </a>
+    </h1>
+    <div class="car-selection-container">
+      <div class="car-selection">
+        <select id="car-filter">
+          <option value="all">All Cars</option>
+        </select>
+        <p id="distance-label">Distance (KM):</p>
+        <input type="text" id="distance" placeholder="Enter Distance">
+        <span id="distance-message"></span>
+        <button id="calculate-time">Calculate Time</button>  
+      
+      <div id="car-list-container">
+        <div id="car-list" class="hidden"> 
+          <p>Top Speed: <span id="top-speed">-- KM/H</span></p>
+          <p>Fuel Efficiency: <span id="fuel-efficiency">-- KM/L</span></p>
+          <p>Fuel Tank Capacity: <span id="fuel-tank-capacity">-- L</span></p>
+          <p>Max Range: <span id="max-range">-- KM</span></p>
+        </div>
+      </div>
+        
+        </div>
+      </div>
     </div>
-  </body>
+
+    <div class="compare-container">
+    <div class="compare-section">
+      
+        
+          <p >Compare with:</p>
+          <select id="compare-car-filter" disabled></select>
+
+        
+        <button id="compare-button" disabled>Compare Selected Cars</button>
+
+
+        <br>
+      
+      <p id="comparison-result"></p>
+
+        </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
+

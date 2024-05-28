@@ -1,0 +1,73 @@
+[
+    {
+      "TYPE OF VEHICLE": "Maruti Suzuki Alto",
+      "TOP SPEED (KM/H)": 140,
+      "FUEL EFFICIENCY (KM/L)": 22.05,
+      "FUEL TANK CAPACITY (L)": 35,
+      "MAX RANGE (KM)": 771.75
+    },
+    {
+      "TYPE OF VEHICLE": "Hyundai i20",
+      "TOP SPEED (KM/H)": 180,
+      "FUEL EFFICIENCY (KM/L)": 20.35,
+      "FUEL TANK CAPACITY (L)": 37,
+      "MAX RANGE (KM)": 753.05
+    },
+    {
+      "TYPE OF VEHICLE": "Tata Nexon",
+      "TOP SPEED (KM/H)": 180,
+      "FUEL EFFICIENCY (KM/L)": 17.57,
+      "FUEL TANK CAPACITY (L)": 44,
+      "MAX RANGE (KM)": 772.68
+    },
+    {
+      "TYPE OF VEHICLE": "Honda City",
+      "TOP SPEED (KM/H)": 180,
+      "FUEL EFFICIENCY (KM/L)": 17.8,
+      "FUEL TANK CAPACITY (L)": 40,
+      "MAX RANGE (KM)": 712.00
+    },
+    {
+      "TYPE OF VEHICLE": "Mahindra Thar",
+      "TOP SPEED (KM/H)": 155,
+      "FUEL EFFICIENCY (KM/L)": 15.2,
+      "FUEL TANK CAPACITY (L)": 57,
+      "MAX RANGE (KM)": 866.40
+    },
+    {
+      "TYPE OF VEHICLE": "Toyota Innova Crysta",
+      "TOP SPEED (KM/H)": 179,
+      "FUEL EFFICIENCY (KM/L)": 11.25,
+      "FUEL TANK CAPACITY (L)": 55,
+      "MAX RANGE (KM)": 618.75
+    },
+    {
+      "TYPE OF VEHICLE": "Kia Seltos",
+      "TOP SPEED (KM/H)": 170,
+      "FUEL EFFICIENCY (KM/L)": 16.8,
+      "FUEL TANK CAPACITY (L)": 50,
+      "MAX RANGE (KM)": 840.00
+    },
+    {
+      "TYPE OF VEHICLE": "Renault Kwid",
+      "TOP SPEED (KM/H)": 150,
+      "FUEL EFFICIENCY (KM/L)": 22.3,
+      "FUEL TANK CAPACITY (L)": 28,
+      "MAX RANGE (KM)": 624.40
+    },
+    {
+      "TYPE OF VEHICLE": "Ford EcoSport",
+      "TOP SPEED (KM/H)": 182,
+      "FUEL EFFICIENCY (KM/L)": 15.9,
+      "FUEL TANK CAPACITY (L)": 52,
+      "MAX RANGE (KM)": 826.80
+    },
+    {
+      "TYPE OF VEHICLE": "Tata Tiago",
+      "TOP SPEED (KM/H)": 150,
+      "FUEL EFFICIENCY (KM/L)": 23.84,
+      "FUEL TANK CAPACITY (L)": 35,
+      "MAX RANGE (KM)": 834.40
+    }
+  ]
+  
