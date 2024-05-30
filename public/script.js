@@ -102,7 +102,9 @@ fetch(carDataUrl)
     
     
     function showDistanceValidationPopup(message) {
-      alert(message); 
+      const distancemessage = document.getElementById('distance-message');
+      distancemessage.textContent = message;
+      distancemessage.classList.add('error'); 
     }
 
 
@@ -110,18 +112,29 @@ fetch(carDataUrl)
     distanceInput.addEventListener('input', () => {
       const distance = parseFloat(distanceInput.value);
       const selectedCar = getSelectedCar();
+
     
       calculateTimeButton.disabled = true;
     
       if (!isNaN(distance) && distance >= 0) {
         if (selectedCar && distance <= selectedCar['MAX RANGE (KM)']) {
           calculateTimeButton.disabled = false; 
+          distancemessage.textContent = ''; 
+          distancemessage.classList.remove('error'); 
+       
         } else {
-          showDistanceValidationPopup(`Distance exceeds ${selectedCar['TYPE OF VEHICLE']} max range of ${selectedCar['MAX RANGE (KM)']} KM.`);
+
+          showDistanceValidationPopup('Distance is out of range');
+
         }
-      } else {
+      }
+          
+        
+      else {
         showDistanceValidationPopup('Please enter a valid non-negative distance in KM.');
       }
+    
+  
     });
     
   })
@@ -136,8 +149,8 @@ fetch(carDataUrl)
 
 
 
-// Function to populate dropdown options using car names
-function populateDropdown(data) {
+ // Function to populate dropdown options using car names
+ function populateDropdown(data) {
   const carFilterSelect = document.getElementById('car-filter');
   data.forEach(car => {
     const optionElement = document.createElement('option');
